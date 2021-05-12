@@ -94,7 +94,8 @@ void CGameFramework::OnProcessingKeyboardMessage(HWND hWnd, UINT nMessageID, WPA
 				case VK_RETURN:
 					break;
 				case VK_CONTROL:
-					((CAirplanePlayer *)m_pPlayer)->FireBullet(m_pSelectedObject);
+					this->m_pPlayer->ActionBoost();
+					//((CAirplanePlayer *)m_pPlayer)->FireBullet(m_pSelectedObject);
 					break;
 				default:
 					m_pScene->OnProcessingKeyboardMessage(hWnd, nMessageID, wParam, lParam);
@@ -143,7 +144,7 @@ void CGameFramework::BuildObjects()
 	m_pPlayer->SetPosition(0.0f, 0.0f, 0.0f);
 	m_pPlayer->SetMesh(pAirplaneMesh);
 	m_pPlayer->SetColor(RGB(0, 0, 255));
-	m_pPlayer->SetCameraOffset(XMFLOAT3(0.0f, 5.0f, -15.0f));
+	m_pPlayer->SetCameraOffset(XMFLOAT3(0.0f, 20.0f, -20.0f));
 
 	m_pScene = new CScene();
 	m_pScene->BuildObjects();
@@ -178,13 +179,23 @@ void CGameFramework::ProcessInput()
 	DWORD dwDirection = 0;
 	if (GetKeyboardState(pKeyBuffer))
 	{
-		if (pKeyBuffer[VK_UP] & 0xF0) dwDirection |= DIR_FORWARD;
-		if (pKeyBuffer[VK_DOWN] & 0xF0) dwDirection |= DIR_BACKWARD;
+		//if (pKeyBuffer[VK_UP] & 0xF0) dwDirection |= DIR_FORWARD;
+		//if (pKeyBuffer[VK_DOWN] & 0xF0) dwDirection |= DIR_BACKWARD;
 		if (pKeyBuffer[VK_LEFT] & 0xF0) dwDirection |= DIR_LEFT;
 		if (pKeyBuffer[VK_RIGHT] & 0xF0) dwDirection |= DIR_RIGHT;
 		if (pKeyBuffer[VK_PRIOR] & 0xF0) dwDirection |= DIR_UP;
 		if (pKeyBuffer[VK_NEXT] & 0xF0) dwDirection |= DIR_DOWN;
 	}
+
+	if (dwDirection == DIR_LEFT) {
+		if (this->m_pPlayer->GetPosition().x < -40)
+			dwDirection = 0;
+	}
+	if (dwDirection == DIR_RIGHT) {
+		if (this->m_pPlayer->GetPosition().x > 40)
+			dwDirection = 0;
+	}
+
 	float cxDelta = 0.0f, cyDelta = 0.0f;
 	POINT ptCursorPos;
 	if (GetCapture() == m_hWnd)
@@ -204,7 +215,7 @@ void CGameFramework::ProcessInput()
 			else
 				m_pPlayer->Rotate(cyDelta, cxDelta, 0.0f);
 		}
-		if (dwDirection) m_pPlayer->Move(dwDirection, 0.15f);
+		if (dwDirection) m_pPlayer->Move(dwDirection, m_pPlayer->m_pSpeed);
 	}
 	m_pPlayer->Update(m_GameTimer.GetTimeElapsed());
 }
@@ -215,11 +226,21 @@ void CGameFramework::FrameAdvance()
 
 	m_GameTimer.Tick(0.0f);
 
+	// [DEV] 플레이어가 앞으로 이동
+	if(m_pPlayer) m_pPlayer->Move(DIR_FORWARD, m_pPlayer->m_pSpeed);
 	ProcessInput();
 
 	float fTimeElapsed = m_GameTimer.GetTimeElapsed();
 	m_pPlayer->Animate(fTimeElapsed);
 	m_pScene->Animate(fTimeElapsed);
+
+	if (m_pPlayer->m_isBooster) {
+		m_pPlayer->m_boostTime -= fTimeElapsed;
+		if (m_pPlayer->m_boostTime < 0) {
+			m_pPlayer->m_isBooster = false;
+			m_pPlayer->m_pSpeed = DEFAULT_BOOST_NORMAL;
+		}
+	}
 
 	ClearFrameBuffer(RGB(255, 255, 255));
 

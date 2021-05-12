@@ -33,6 +33,8 @@
 #include <memory.h>
 #include <tchar.h>
 #include <math.h>
+#include <random>
+#include <iostream>
 
 #include <d3d12.h>
 #include <DirectXMath.h>
@@ -44,6 +46,8 @@
 
 using namespace DirectX;
 using namespace DirectX::PackedVector;
+
+using namespace std;
 
 #pragma comment(lib, "d3d12.lib")
 
@@ -60,10 +64,15 @@ using namespace DirectX::PackedVector;
 #define RANDOM_COLOR			(0xFF000000 | ((rand() * 0xFFFFFF) / RAND_MAX))
 
 #define EXPLOSION_DEBRISES		240
+#define DEFAULT_BOOST_TIME		3
+#define DEFAULT_BOOST_SPEED		3
+#define DEFAULT_BOOST_NORMAL	1	
 
 //#define _WITH_VECTOR_OPERATION
 
 #define EPSILON					1.0e-6f
+
+
 
 inline bool IsZero(float fValue) { return((fabsf(fValue) < EPSILON)); }
 inline bool IsEqual(float fA, float fB) { return(::IsZero(fA - fB)); }

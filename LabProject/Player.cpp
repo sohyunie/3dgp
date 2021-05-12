@@ -14,7 +14,6 @@ CPlayer::CPlayer()
 	m_xmf3Up = XMFLOAT3(0.0f, 1.0f, 0.0f);
 	m_xmf3Look = XMFLOAT3(0.0f, 0.0f, 1.0f);
 
-	m_xmf3CameraOffset = XMFLOAT3(0.0f, 0.0f, 0.0f);
 	m_xmf3Velocity = XMFLOAT3(0.0f, 0.0f, 0.0f);
 }
 
@@ -31,8 +30,9 @@ void CPlayer::SetPosition(float x, float y, float z)
 
 void CPlayer::SetCameraOffset(XMFLOAT3& xmf3CameraOffset)
 {
+	XMFLOAT3 pos = XMFLOAT3(m_xmf3Position.x, m_xmf3Position.y,m_xmf3Position.z + 20);
 	m_xmf3CameraOffset = xmf3CameraOffset;
-	m_pCamera->SetLookAt(Vector3::Add(m_xmf3Position, m_xmf3CameraOffset), m_xmf3Position, m_xmf3Up);
+	m_pCamera->SetLookAt(Vector3::Add(m_xmf3Position, m_xmf3CameraOffset), pos, m_xmf3Up);
 	m_pCamera->GenerateViewMatrix();
 }
 
@@ -139,6 +139,12 @@ void CPlayer::Render(HDC hDCFrameBuffer, CCamera *pCamera)
 	CGameObject::Render(hDCFrameBuffer, pCamera);
 }
 
+
+void CPlayer::ActionBoost() {
+	this->m_isBooster = true;
+	this->m_boostTime = DEFAULT_BOOST_TIME;
+	this->m_pSpeed = DEFAULT_BOOST_SPEED;
+}
 /////////////////////////////////////////////////////////////////////////////////////////////
 //
 CAirplanePlayer::CAirplanePlayer()

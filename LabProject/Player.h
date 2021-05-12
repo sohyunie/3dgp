@@ -21,6 +21,10 @@ public:
 	float           			m_fYaw = 0.0f;
 	float           			m_fRoll = 0.0f;
 
+	float						m_pSpeed = DEFAULT_BOOST_NORMAL;
+	float						m_boostTime = 0.0;
+	bool						m_isBooster = false;
+
 	CCamera						*m_pCamera = NULL;
 
 	void SetPosition(float x, float y, float z);
@@ -32,6 +36,7 @@ public:
 	void Rotate(float fPitch = 0.0f, float fYaw = 0.0f, float fRoll = 0.0f);
 	void SetCameraOffset(XMFLOAT3& xmf3CameraOffset);
 	void Update(float fTimeElapsed=0.016f);
+	void ActionBoost();
 
 	virtual void OnUpdateTransform();
 	virtual void Animate(float fElapsedTime);

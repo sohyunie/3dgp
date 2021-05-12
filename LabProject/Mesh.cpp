@@ -194,10 +194,10 @@ CCubeMesh::~CCubeMesh(void)
 CWallMesh::CWallMesh(float fWidth, float fHeight, float fDepth, int nSubRects) : CMesh((4 * nSubRects * nSubRects)+2)
 {
 	float fHalfWidth = fWidth * 0.5f;
-	float fHalfHeight = fHeight * 0.5f;
-	float fHalfDepth = fDepth * 0.5f;
+	float fHalfHeight = fHeight * 0.5f * 0;
+	float fHalfDepth = fDepth * 0.05f;
 	float fCellWidth = fWidth * (1.0f / nSubRects);
-	float fCellHeight = fHeight * (1.0f / nSubRects);
+	float fCellHeight = fHeight * (1.0f / nSubRects) * 0;
 	float fCellDepth = fDepth * (1.0f / nSubRects);
 
 	int k = 0;
