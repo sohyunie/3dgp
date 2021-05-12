@@ -19,7 +19,6 @@ public:
 	virtual void BuildObjects();
 	virtual void ReleaseObjects();
 
-	void CheckObjectByObjectCollisions();
 	void CheckObjectByPlayerCollisions();
 	void CheckPlayerByWallCollision();
 	void CheckObjectByBulletCollisions();

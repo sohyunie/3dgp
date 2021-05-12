@@ -64,15 +64,25 @@ using namespace std;
 #define RANDOM_COLOR			(0xFF000000 | ((rand() * 0xFFFFFF) / RAND_MAX))
 
 #define EXPLOSION_DEBRISES		240
-#define DEFAULT_BOOST_TIME		3
-#define DEFAULT_BOOST_SPEED		3
+#define DEFAULT_BOOST_TIME		5
+#define DEFAULT_BOOST_SPEED		6
 #define DEFAULT_BOOST_NORMAL	1	
+
+#define SPEED_MAX		3
+#define SPEED_DEFAULT	1.5
 
 //#define _WITH_VECTOR_OPERATION
 
 #define EPSILON					1.0e-6f
 
-
+enum ObjectType
+{
+	PLAYER,
+	WALL,
+	OBJECT,
+	ITEM,
+	COIN
+};
 
 inline bool IsZero(float fValue) { return((fabsf(fValue) < EPSILON)); }
 inline bool IsEqual(float fA, float fB) { return(::IsZero(fA - fB)); }

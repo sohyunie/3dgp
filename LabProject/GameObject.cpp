@@ -1,6 +1,8 @@
 #include "StdAfx.h"
 #include "GameObject.h"
 
+int CCoinObject::m_xPosition = 5;
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 inline float RandF(float fMin, float fMax)
@@ -23,7 +25,8 @@ XMVECTOR RandomUnitVectorOnSphere()
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 CGameObject::CGameObject() 
-{ 
+{
+	type = ObjectType::OBJECT;
 	m_pMesh = NULL; 
 	m_xmf4x4World = Matrix4x4::Identity();
 
@@ -167,7 +170,22 @@ void CGameObject::Render(HDC hDCFrameBuffer, CCamera *pCamera)
 	{
 		if (pCamera->IsInFrustum(m_xmOOBB))
 		{
-			HPEN hPen = ::CreatePen(PS_SOLID, 0, m_dwColor);
+			int brushSize = 1;
+			switch (this->type) {
+			case  ObjectType::WALL:
+				brushSize = 1;
+				break;
+			case  ObjectType::ITEM:
+				brushSize = 10;
+				break;
+			case  ObjectType::PLAYER:
+				brushSize = 10;
+				break;
+			case  ObjectType::OBJECT:
+				brushSize = 3;
+				break;
+			}
+			HPEN hPen = ::CreatePen(PS_SOLID, brushSize, m_dwColor);
 			HPEN hOldPen = (HPEN)::SelectObject(hDCFrameBuffer, hPen);
 			m_pMesh->Render(hDCFrameBuffer, m_xmf4x4World, pCamera);
 			::SelectObject(hDCFrameBuffer, hOldPen);
@@ -202,12 +220,48 @@ int CGameObject::PickObjectByRayIntersection(XMVECTOR& xmvPickPosition, XMMATRIX
 //
 CWallsObject::CWallsObject()
 {
+	type = ObjectType::WALL;
 }
 
 CWallsObject::~CWallsObject()
 {
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+CItemObject::CItemObject()
+{
+	type = ObjectType::ITEM;
+}
+
+CItemObject::~CItemObject()
+{
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+CCoinObject::CCoinObject(int xPosition)
+{
+	type = ObjectType::COIN;
+	this->m_bFirstCoin = true;
+	this->m_xPosition = xPosition;
+}
+
+CCoinObject::CCoinObject()
+{
+	type = ObjectType::COIN;
+}
+
+CCoinObject::~CCoinObject()
+{
+}
+
+void CCoinObject::SetPosition(float x, float y, float z)
+{
+	m_xmf4x4World._41 = this->m_xPosition;
+	m_xmf4x4World._42 = y;
+	m_xmf4x4World._43 = z;
+}
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 //
 XMFLOAT3 CExplosiveObject::m_pxmf3SphereVectors[EXPLOSION_DEBRISES];

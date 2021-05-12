@@ -198,7 +198,7 @@ CWallMesh::CWallMesh(float fWidth, float fHeight, float fDepth, int nSubRects) :
 	float fHalfDepth = fDepth * 0.05f;
 	float fCellWidth = fWidth * (1.0f / nSubRects);
 	float fCellHeight = fHeight * (1.0f / nSubRects) * 0;
-	float fCellDepth = fDepth * (1.0f / nSubRects);
+	float fCellDepth = fDepth * (1.0f / nSubRects) * 5;
 
 	int k = 0;
 	CPolygon *pLeftFace;

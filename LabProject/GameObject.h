@@ -30,12 +30,14 @@ public:
 
 	XMFLOAT3					m_xmf3RotationAxis;
 	float						m_fRotationSpeed;
+	ObjectType					type;
+	bool						m_bVisible = true;
 
 public:
 	void SetActive(bool bActive) { m_bActive = bActive; }
 	void SetMesh(CMesh *pMesh) { m_pMesh = pMesh; if (pMesh) pMesh->AddRef(); }
 	void SetColor(DWORD dwColor) { m_dwColor = dwColor; }
-	void SetPosition(float x, float y, float z);
+	virtual void SetPosition(float x, float y, float z);
 	void SetPosition(XMFLOAT3& xmf3Position);
 
 	void SetMovingDirection(XMFLOAT3& xmf3MovingDirection) { m_xmf3MovingDirection = Vector3::Normalize(xmf3MovingDirection); }
@@ -83,7 +85,7 @@ public:
 
 	float						m_fElapsedTimes = 0.0f;
 	float						m_fDuration = 0.7f;
-	float						m_fExplosionSpeed = 10.0f;
+	float						m_fExplosionSpeed = 20.0f;
 	float						m_fExplosionRotation = 720.0f;
 
 	virtual void Animate(float fElapsedTime);
@@ -105,6 +107,26 @@ public:
 public:
 	BoundingOrientedBox			m_xmOOBBPlayerMoveCheck;
 	XMFLOAT4					m_pxmf4WallPlanes[6];
+};
+
+class CItemObject : public CGameObject
+{
+public:
+	CItemObject();
+	virtual ~CItemObject();
+};
+
+class CCoinObject : public CGameObject
+{
+public:
+	CCoinObject();
+	CCoinObject(int xPosition);
+	virtual ~CCoinObject();
+	virtual void SetPosition(float x, float y, float z);
+
+public:
+	bool						m_bFirstCoin = false;
+	static int					m_xPosition;
 };
 
 class CBulletObject : public CGameObject
