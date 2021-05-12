@@ -65,11 +65,11 @@ using namespace std;
 
 #define EXPLOSION_DEBRISES		240
 #define DEFAULT_BOOST_TIME		5
-#define DEFAULT_BOOST_SPEED		6
-#define DEFAULT_BOOST_NORMAL	1	
 
-#define SPEED_MAX		3
-#define SPEED_DEFAULT	1.5
+#define DEFAULT_BOOST_NORMAL	30	
+#define DEFAULT_BOOST_SPEED		80
+#define SPEED_MAX		40
+#define SPEED_DEFAULT	25
 
 //#define _WITH_VECTOR_OPERATION
 

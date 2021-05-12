@@ -5,6 +5,9 @@
 #include "stdafx.h"
 #include "GameFramework.h"
 
+default_random_engine drePlayer;
+uniform_int_distribution <int> uidPlayer{ 0,255 };
+
 CGameFramework::CGameFramework()
 {
 	_tcscpy_s(m_pszFrameRate, _T("LabProject ("));
@@ -215,7 +218,7 @@ void CGameFramework::ProcessInput()
 		//	else
 		//		m_pPlayer->Rotate(cyDelta, cxDelta, 0.0f);
 		//}
-		if (dwDirection) m_pPlayer->Move(dwDirection, m_pPlayer->m_pSpeed);
+		if (dwDirection) m_pPlayer->Move(dwDirection, m_pPlayer->m_pSpeed * m_GameTimer.GetTimeElapsed() * 2);
 	}
 	m_pPlayer->Update(m_GameTimer.GetTimeElapsed());
 }
@@ -227,23 +230,27 @@ void CGameFramework::FrameAdvance()
 	m_GameTimer.Tick(0.0f);
 
 	// [DEV] 플레이어가 앞으로 이동
-	if(m_pPlayer) m_pPlayer->Move(DIR_FORWARD, m_pPlayer->m_pSpeed);
 	ProcessInput();
 
 	float fTimeElapsed = m_GameTimer.GetTimeElapsed();
+	if (m_pPlayer) m_pPlayer->Move(DIR_FORWARD, m_pPlayer->m_pSpeed * fTimeElapsed);
 	m_pPlayer->Animate(fTimeElapsed);
 	m_pScene->Animate(fTimeElapsed);
 
 	if (m_pPlayer->m_isBooster) {
+		m_pPlayer->SetColor(RGB(uidPlayer(drePlayer), uidPlayer(drePlayer), uidPlayer(drePlayer)));
 		m_pPlayer->m_boostTime -= fTimeElapsed;
 		if (m_pPlayer->m_boostTime < 0) {
 			m_pPlayer->m_isBooster = false;
 			m_pPlayer->m_pSpeed = SPEED_MAX;
 		}
 	}
+	else {
+		m_pPlayer->SetColor(RGB(50, 50, 255));
+	}
 
 	if (m_pPlayer->m_pSpeed < SPEED_MAX) {
-		m_pPlayer->m_pSpeed += (fTimeElapsed / 2.0f);
+		m_pPlayer->m_pSpeed += fTimeElapsed * 5;
 	}
 
 	ClearFrameBuffer(RGB(50, 50, 50));

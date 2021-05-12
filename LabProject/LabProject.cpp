@@ -144,6 +144,10 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 	int wmId, wmEvent;
 	PAINTSTRUCT ps;
 	HDC hdc;
+	RECT rect;
+	RECT window_rect;
+
+	GetClientRect(hWnd, &window_rect);
 
 	switch (message)
 	{
@@ -183,6 +187,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		case WM_PAINT:
 			hdc = BeginPaint(hWnd, &ps);
 			// TODO: 여기에 그리기 코드를 추가합니다.
+			rect = { 0, 0, window_rect.right, window_rect.bottom };
+			SetBkColor(hdc, RGB(0, 0, 0));
+			SetTextColor(hdc, RGB(255, 255, 255));
+			DrawText(hdc, L"WHY", 3, &rect, DT_SINGLELINE | DT_TOP | DT_LEFT);
+
 			EndPaint(hWnd, &ps);
 			break;
 		case WM_DESTROY:
