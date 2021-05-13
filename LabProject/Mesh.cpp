@@ -282,9 +282,9 @@ CWallMesh::~CWallMesh(void)
 //
 CAirplaneMesh::CAirplaneMesh(float fWidth, float fHeight, float fDepth) : CMesh(24)
 {
-	float fx = fWidth*0.5f, fy = fHeight*0.5f, fz = fDepth*0.5f;
+	float fx = fWidth*0.5f, fy = fHeight*0.5f, fz = fDepth*1.5f;
 
-	float x1 = fx * 0.2f, y1 = fy * 0.2f, x2 = fx * 0.1f, y3 = fy * 0.3f, y2 = ((y1 - (fy - y3)) / x1)*x2 + (fy - y3);
+	float x1 = fx * 0.8f, y1 = fy * 0.2f, x2 = fx * 0.1f, y3 = fy * 0.3f, y2 = ((y1 - (fy - y3)) / x1)*x2 + (fy - y3);
 	int i = 0;
 
 	//Upper Plane

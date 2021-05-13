@@ -253,7 +253,7 @@ void CGameFramework::FrameAdvance()
 		m_pPlayer->m_pSpeed += fTimeElapsed * 5;
 	}
 
-	ClearFrameBuffer(RGB(50, 50, 50));
+	ClearFrameBuffer(RGB(200 - m_pPlayer->m_coin * 10, 200- m_pPlayer->m_coin * 10, 200 - m_pPlayer->m_coin * 10));
 
 	m_pPlayer->SetCameraOffset(XMFLOAT3(0.0f, 20.0f, -20.0f));
 	m_pScene->Render(m_hDCFrameBuffer, m_pPlayer->m_pCamera);

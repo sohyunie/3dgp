@@ -24,6 +24,7 @@ public:
 	float						m_pSpeed = DEFAULT_BOOST_NORMAL;
 	float						m_boostTime = 0.0;
 	bool						m_isBooster = false;
+	int							m_coin = 0;
 
 	CCamera						*m_pCamera = NULL;
 

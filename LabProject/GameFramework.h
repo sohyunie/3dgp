@@ -35,6 +35,8 @@ private:
 	CScene						*m_pScene = NULL;
 	CGameObject					*m_pSelectedObject = NULL;
 
+	int							coinCount;
+
 public:
 	void BuildFrameBuffer();
 	void ClearFrameBuffer(DWORD dwColor);

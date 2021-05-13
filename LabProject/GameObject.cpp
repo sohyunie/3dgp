@@ -173,7 +173,7 @@ void CGameObject::Render(HDC hDCFrameBuffer, CCamera *pCamera)
 			int brushSize = 1;
 			switch (this->type) {
 			case  ObjectType::WALL:
-				brushSize = 1;
+				brushSize = 10;
 				break;
 			case  ObjectType::ITEM:
 				brushSize = 10;

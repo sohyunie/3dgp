@@ -83,21 +83,21 @@ void CScene::BuildObjects()
 	m_ppObjects[0]->SetColor(RGB(255, 0, 0));
 	m_ppObjects[0]->SetPosition(-13.5f, 0.0f, 350.0f);
 	m_ppObjects[0]->SetMovingDirection(XMFLOAT3(0.0f, 0.0f, -1.0f));
-	m_ppObjects[0]->SetMovingSpeed(6.5f);
+	m_ppObjects[0]->SetMovingSpeed(9.5f);
 
 	m_ppObjects[1] = new CExplosiveObject();
 	m_ppObjects[1]->SetMesh(pObjectCubeMesh);
 	m_ppObjects[1]->SetColor(RGB(0, 0, 255));
 	m_ppObjects[1]->SetPosition(+13.5f, 0.0f, 440.0f);
 	m_ppObjects[1]->SetMovingDirection(XMFLOAT3(0.0f, 0.0f, -1.0f));
-	m_ppObjects[1]->SetMovingSpeed(4.8f);
+	m_ppObjects[1]->SetMovingSpeed(6.8f);
 
 	m_ppObjects[2] = new CExplosiveObject();
 	m_ppObjects[2]->SetMesh(pObjectCubeMesh);
 	m_ppObjects[2]->SetColor(RGB(0, 255, 0));
 	m_ppObjects[2]->SetPosition(0.0f, 0.0f, 400.0f);
 	m_ppObjects[2]->SetMovingDirection(XMFLOAT3(0.0f, 0.0f, -1.0f));
-	m_ppObjects[2]->SetMovingSpeed(1.2f);
+	m_ppObjects[2]->SetMovingSpeed(3.2f);
 
 	m_ppObjects[3] = new CExplosiveObject();
 	m_ppObjects[3]->SetMesh(pObjectCubeMesh);
@@ -111,21 +111,21 @@ void CScene::BuildObjects()
 	m_ppObjects[4]->SetColor(RGB(128, 0, 255));
 	m_ppObjects[4]->SetPosition(10.0f, 0.0f, 130.0f);
 	m_ppObjects[4]->SetMovingDirection(XMFLOAT3(0.0f, 0.0f, -1.0f));
-	m_ppObjects[4]->SetMovingSpeed(5.4f);
+	m_ppObjects[4]->SetMovingSpeed(26.4f);
 
 	m_ppObjects[5] = new CExplosiveObject();
 	m_ppObjects[5]->SetMesh(pObjectCubeMesh);
 	m_ppObjects[5]->SetColor(RGB(255, 0, 255));
 	m_ppObjects[5]->SetPosition(-10.0f, 0.0f, 550.0f);
 	m_ppObjects[5]->SetMovingDirection(XMFLOAT3(0.0f, 0.0f, -1.0f));
-	m_ppObjects[5]->SetMovingSpeed(0.9f);
+	m_ppObjects[5]->SetMovingSpeed(30.9f);
 
 	m_ppObjects[6] = new CExplosiveObject();
 	m_ppObjects[6]->SetMesh(pObjectCubeMesh);
 	m_ppObjects[6]->SetColor(RGB(255, 0, 255));
 	m_ppObjects[6]->SetPosition(-10.0f, 0.0f, 320.0f);
 	m_ppObjects[6]->SetMovingDirection(XMFLOAT3(0.0f, 0.0f, -1.0f));
-	m_ppObjects[6]->SetMovingSpeed(9.7f);
+	m_ppObjects[6]->SetMovingSpeed(14.7f);
 
 	m_ppObjects[7] = new CExplosiveObject();
 	m_ppObjects[7]->SetMesh(pObjectCubeMesh);
@@ -139,56 +139,56 @@ void CScene::BuildObjects()
 	m_ppObjects[8]->SetColor(RGB(128, 0, 255));
 	m_ppObjects[8]->SetPosition(-15.0f, 0.0f, 170.0f);
 	m_ppObjects[8]->SetMovingDirection(XMFLOAT3(0.0f, 0.0f, -1.0f));
-	m_ppObjects[8]->SetMovingSpeed(4.0f);
+	m_ppObjects[8]->SetMovingSpeed(40.0f);
 
 	m_ppObjects[9] = new CExplosiveObject();
 	m_ppObjects[9]->SetMesh(pObjectCubeMesh);
 	m_ppObjects[9]->SetColor(RGB(255, 64, 64));
 	m_ppObjects[9]->SetPosition(+15.0f, 0.0f, 154.0f);
 	m_ppObjects[9]->SetMovingDirection(XMFLOAT3(0.0f, 0.0f, -1.0f));
-	m_ppObjects[9]->SetMovingSpeed(0.3f);
+	m_ppObjects[9]->SetMovingSpeed(9.3f);
 
 	m_ppObjects[10] = new CExplosiveObject();
 	m_ppObjects[10]->SetMesh(pObjectCubeMesh);
 	m_ppObjects[10]->SetColor(RGB(255, 64, 64));
 	m_ppObjects[10]->SetPosition(+15.0f, 0.0f, 254.0f);
 	m_ppObjects[10]->SetMovingDirection(XMFLOAT3(0.0f, 0.0f, -1.0f));
-	m_ppObjects[10]->SetMovingSpeed(4.0f);
+	m_ppObjects[10]->SetMovingSpeed(12.0f);
 
 	m_ppObjects[11] = new CExplosiveObject();
 	m_ppObjects[11]->SetMesh(pObjectCubeMesh);
 	m_ppObjects[11]->SetColor(RGB(255, 64, 64));
 	m_ppObjects[11]->SetPosition(+15.0f, 0.0f, 254.0f);
 	m_ppObjects[11]->SetMovingDirection(XMFLOAT3(0.0f, 0.0f, -1.0f));
-	m_ppObjects[11]->SetMovingSpeed(2.0f);
+	m_ppObjects[11]->SetMovingSpeed(28.0f);
 
 	m_ppObjects[12] = new CExplosiveObject();
 	m_ppObjects[12]->SetMesh(pObjectCubeMesh);
 	m_ppObjects[12]->SetColor(RGB(255, 64, 64));
 	m_ppObjects[12]->SetPosition(+15.0f, 0.0f, 254.0f);
 	m_ppObjects[12]->SetMovingDirection(XMFLOAT3(0.0f, 0.0f, -1.0f));
-	m_ppObjects[12]->SetMovingSpeed(1.0f);
+	m_ppObjects[12]->SetMovingSpeed(11.0f);
 
 	m_ppObjects[13] = new CExplosiveObject();
 	m_ppObjects[13]->SetMesh(pObjectCubeMesh);
 	m_ppObjects[13]->SetColor(RGB(255, 64, 64));
 	m_ppObjects[13]->SetPosition(+15.0f, 0.0f, 254.0f);
 	m_ppObjects[13]->SetMovingDirection(XMFLOAT3(0.0f, 0.0f, -1.0f));
-	m_ppObjects[13]->SetMovingSpeed(2.0f);
+	m_ppObjects[13]->SetMovingSpeed(12.0f);
 
 	m_ppObjects[14] = new CExplosiveObject();
 	m_ppObjects[14]->SetMesh(pObjectCubeMesh);
 	m_ppObjects[14]->SetColor(RGB(255, 64, 64));
 	m_ppObjects[14]->SetPosition(+15.0f, 0.0f, 260.0f);
 	m_ppObjects[14]->SetMovingDirection(XMFLOAT3(0.0f, 0.0f, -1.0f));
-	m_ppObjects[14]->SetMovingSpeed(0.5f);
+	m_ppObjects[14]->SetMovingSpeed(14.5f);
 
 	m_ppObjects[15] = new CItemObject();
 	m_ppObjects[15]->SetMesh(pObjectSmallCubeMesh);
 	m_ppObjects[15]->SetColor(RGB(255, 255, 255));
 	m_ppObjects[15]->SetPosition(+15.0f, 0.0f, 200.0f);
 	m_ppObjects[15]->SetMovingDirection(XMFLOAT3(0.0f, 0.0f, -1.0f));
-	m_ppObjects[15]->SetMovingSpeed(0.0f);
+	m_ppObjects[15]->SetMovingSpeed(10.0f);
 
 
 
@@ -290,6 +290,8 @@ void CScene::CheckObjectByPlayerCollisions()
 				break;
 			case ObjectType::COIN:
 				// 점수가 얻어지겠지?
+				m_pPlayer->m_coin++;
+				
 				m_ppObjects[i]->m_bVisible = false;
 				break;
 			}
